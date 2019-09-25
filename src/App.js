@@ -1,21 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import Header from './components/header/Header'
-import Nav from './components/nav/Nav'
-import Profile from './components/profile/Profile'
+import { Route } from 'react-router-dom';
+import Header from './components/header/Header';
+import Nav from './components/nav/Nav';
+import LastDialogs from './components/lastDialogs/LastDialogs';
+import Profile from './components/profile/Profile';
+import Dialogs from './components/dialogs/Dialogs';
 import './App.css';
 
-function App() {
+function App(props) {
   return (
-    <div className="grid">
-      <Header />
+      <div className="grid">
+        <Header text='Site'/>
 
-      <aside className="aside">
-        <Nav />
-      </aside>
-      
-      <Profile />
-    </div>
+        <aside className="aside">
+          <Nav />
+          <LastDialogs state={ props.state.lastDialogs }/>
+        </aside>
+        <div className="content">
+          <Route path="/profile" 
+            render={ () => <Profile profilePage={ props.state.profilePage } addPost={ props.addPost } onInputPostText={ props.onInputPostText }/> } />
+          <Route path="/dialogs" 
+            render={ () => <Dialogs state={ props.state.messagesPage }/> } />
+        </div>
+      </div>
   );
 }
 

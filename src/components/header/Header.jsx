@@ -1,9 +1,13 @@
 import React from 'react';
+import classes from './Header.module.css';
 
-function Header() {
+function Header(props) {
   return (
-    <header className="header">
-      <img src="https://www.searchpng.com/wp-content/uploads/2019/02/Avengers-Logo-PNG-Transparent-Avengers-Logo-715x715.png" alt=""/>
+    <header className={ classes.header }>
+      <a href="/">
+        <img src="https://www.freeiconspng.com/uploads/avengers-icon-16.png" alt=""/>
+      </a>
+      <span className={classes['header__text']}>{props.text}</span>
     </header>
   )
 }

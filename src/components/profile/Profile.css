@@ -1,0 +1,15 @@
+.main {
+  grid-area: main;
+  /* padding: 15px; */
+}
+
+.wide-image {
+  /* height: 300px; */
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.wide-image img {
+  display: block;
+  width: 100%;
+}

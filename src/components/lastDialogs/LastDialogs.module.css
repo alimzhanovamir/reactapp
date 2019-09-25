@@ -1,0 +1,51 @@
+.last-dialogs {
+  background-color: #fff;
+  border-radius: 3px;
+  margin-top: 30px;
+  padding: 15px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.04),0 4px 8px 0 rgba(0,0,0,0.20);
+}
+
+.last-dialogs__header {
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.last-dialogs__list {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.last-dialogs__item {
+ 
+} 
+
+.last-dialogs__link {
+  color: #000;
+} 
+
+.last-dialogs__link:hover {
+  text-decoration: none;
+}
+
+.last-dialogs__dialog {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.last-dialogs__avatar {
+  width: 100%;
+}
+
+.last-dialogs__title {
+  font-size: 12px;
+  text-align: center;
+}

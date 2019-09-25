@@ -1,0 +1,24 @@
+.user-posts {
+  background-color: #fff;
+  border-radius: 3px;
+  margin-bottom: 30px;
+  padding: 15px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.04),0 4px 8px 0 rgba(0,0,0,0.20);
+}
+
+.user-posts__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.user-posts__item {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.user-posts__item:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}

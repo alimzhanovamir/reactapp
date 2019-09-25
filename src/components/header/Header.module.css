@@ -1,0 +1,17 @@
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 50px;
+  background-color: rgba(0,0,0,0.20);
+  padding: 0 15px;
+}
+
+.header img {
+  max-width: 50px;
+}
+
+.header__text {
+  font-weight: bold;
+}
