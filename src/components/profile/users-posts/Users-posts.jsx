@@ -4,9 +4,9 @@ import NewPost from './new-post/New-post';
 import Post from './post/Post';
 
 function UsersPosts(props) {
-  let postsList = props.posts.map( post => {
+  let postsList = props.posts.map( ( post, id ) => {
     return (
-      <li className={ classes['user-posts__item'] }>
+      <li className={ classes['user-posts__item'] } key={id}>
         <Post name={ post.name } message={ post.message } />
       </li>
     )
