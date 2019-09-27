@@ -7,7 +7,7 @@ function Nav() {
     <nav className={ classes.nav }>
       <ul className={ classes.nav__list }>
         <li className={classes.nav__item}>
-          <NavLink className={ classes.nav__link } activeClassName={classes.active} to="/profile">Profile</NavLink>
+          <NavLink className={ classes.nav__link } activeClassName={classes.active} to="/">Profile</NavLink>
         </li>
         <li className={ classes.nav__item }>
           <NavLink className={ classes.nav__link } activeClassName={classes.active} to="/dialogs">Messages</NavLink>
