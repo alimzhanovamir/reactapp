@@ -1,3 +1,5 @@
+
+// begin:: Store
 let store = {
   _state: {
     profilePage: {
@@ -47,28 +49,55 @@ let store = {
   _callSubscriber() {
     console.log('State changed');
   },
-  onInputPostText( newText ) {
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber( this._state );
-  },
-  addPost() {
-    let newPost = {
-      name: 'Samuray',
-      message: this._state.profilePage.newPostText
-    };
-  
-    this._state.profilePage.posts.push( newPost);
-    this._state.profilePage.newPostText = '';
-    this._callSubscriber( this._state );
-  },
   subscribe( observer ) {
     this._callSubscriber = observer;
   },
   getState() {
     return this._state
+  },
+  dispatch(action) {
+    if ( action.type === 'INPUT-POST-TEXT' ) {
+      this._state.profilePage.newPostText = action.text;
+      this._callSubscriber( this._state );
+    }
+
+    else if ( action.type === 'ADD-POST' ) {
+      let postText = {
+        name: 'Samurai',
+        message: this._state.profilePage.newPostText
+      };
+
+      this._state.profilePage.posts.push( action.postText );
+      this._state.profilePage.newPostText = '';
+      this._callSubscriber( this._state );
+    }
+  }
+};
+// end:: Store
+
+// begin:: Action types
+const ADD_POST = 'ADD-POST';
+const INPUT_POST_TEXT = 'INPUT-POST-TEXT';
+// end:: Action types
+
+
+// begin:: Action creators
+export function addPostActionCreator(name, text){
+  return {
+    type: ADD_POST,
+    postText: {
+      name: name,
+      message: text
+    }
   }
 }
 
-window.store = store;
+export function onPostChangeActionCreator(text){
+  return {
+    type: INPUT_POST_TEXT,
+    text: text
+  }
+}
+// end:: Action creators
 
 export default store;

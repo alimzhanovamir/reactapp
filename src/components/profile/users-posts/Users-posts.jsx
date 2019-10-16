@@ -15,10 +15,7 @@ function UsersPosts(props) {
   return (
     <div className={ classes['user-posts'] }>
       
-      <NewPost 
-        addPost={ props.addPost } 
-        newPostText={ props.newPostText } 
-        onInputPostText={ props.onInputPostText }/>
+      <NewPost newPostText={ props.newPostText } dispatch={ props.dispatch }/>
 
       <ul className={ classes['user-posts__list'] }>
         { postsList }

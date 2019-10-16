@@ -14,8 +14,7 @@ function Profile(props) {
       <UsersPosts 
         posts={ props.profilePage.posts } 
         newPostText={ props.profilePage.newPostText }
-        addPost={ props.addPost }
-        onInputPostText={ props.onInputPostText }/>
+        dispatch={ props.dispatch }/>
       
     </main>
   )

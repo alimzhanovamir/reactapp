@@ -17,10 +17,8 @@ function App(props) {
         <LastDialogs state={ props.state.lastDialogs }/>
       </aside>
       <div className="content">
-        <Route path="/" 
-          render={ () => <Profile profilePage={ props.state.profilePage } addPost={ props.addPost } onInputPostText={ props.onInputPostText }/> } />
-        <Route path="/dialogs" 
-          render={ () => <Dialogs state={ props.state.messagesPage }/> } />
+        <Route exact path="/" render={ () => <Profile profilePage={ props.state.profilePage } dispatch={ props.dispatch } /> } />
+        <Route path="/dialogs" render={ () => <Dialogs state={ props.state.messagesPage }/> } />
       </div>
     </div>
   );
