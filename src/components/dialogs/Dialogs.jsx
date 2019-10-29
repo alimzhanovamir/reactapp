@@ -8,7 +8,11 @@ function Dialogs(props) {
   let dialogsElements = props.state.dialogsData.map( dialog => {
     return (
       <li className={classes['dialogs__item']}>
-        <DialogsItem id={ dialog.id } name={ dialog.name } messages={ dialog.message } active={true} />
+        <DialogsItem
+          id={ dialog.id }
+          name={ dialog.name }
+          messages={ dialog.lastMessage }
+          active={true} />
       </li>
     )
   });

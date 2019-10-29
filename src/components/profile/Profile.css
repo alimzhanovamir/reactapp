@@ -1,10 +1,10 @@
 .main {
   grid-area: main;
-  /* padding: 15px; */
 }
 
 .wide-image {
-  /* height: 300px; */
+  min-height: 150px;
+  background-color: #333;
   margin-bottom: 30px;
   overflow: hidden;
 }

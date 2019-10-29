@@ -10,7 +10,7 @@ function Messages(props) {
         <Message name={ messageData.name } message={ messageData.message } />
       </li>
     )
-  })
+  });
 
   return (
     <div className={classes['messages-section']}>

@@ -28,16 +28,18 @@ let store = {
     
     messagesPage: {
       dialogsData: [
-        {id: 1, name: 'Amir', message: 'Hello'},
-        {id: 2, name: 'Lida', message: 'Hello =)'},
-        {id: 3, name: 'Lada', message: 'Af af dsaf dasf sdf sadf sadfdsf'}
+        {id: 1, name: 'Amir', lastMessage: 'Hello'},
+        {id: 2, name: 'Lida', lastMessage: 'Hello =)'},
+        {id: 3, name: 'Lada', lastMessage: 'Af af dsaf dasf sdf sadf sadfdsf'}
       ],
   
       messagesData: [
         { name: 'Amir', message: 'Hello' },
         { name: 'Lida', message: 'Hello )))' },
         { name: 'Amir', message: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nulla!)))' }
-      ]
+      ],
+
+      newMessageBody: ''
     },
   
     lastDialogs: [
@@ -56,12 +58,13 @@ let store = {
     return this._state
   },
   dispatch(action) {
-    if ( action.type === 'INPUT-POST-TEXT' ) {
+
+    if ( action.type === INPUT_POST_TEXT ) {
       this._state.profilePage.newPostText = action.text;
       this._callSubscriber( this._state );
     }
 
-    else if ( action.type === 'ADD-POST' ) {
+    else if ( action.type === ADD_POST ) {
       let postText = {
         name: 'Samurai',
         message: this._state.profilePage.newPostText
@@ -71,13 +74,30 @@ let store = {
       this._state.profilePage.newPostText = '';
       this._callSubscriber( this._state );
     }
+
+    else if ( action.type === UPDATE_NEW_MESSAGE_BODY ) {
+      this._state.messagesPage.newMessageBody = action.body;
+      this._callSubscriber( this._state );
+    }
+
+    else if ( action.type === SEND_MASSAGE ) {
+      let body = this._state.messagesPage.newMessageBody;
+      this._state.messagesPage.newMessageBody = '';
+      this._state.messagesPage.messagesData.push({
+        id: 6,
+        message: body
+      });
+      this._callSubscriber( this._state );
+    }
   }
 };
 // end:: Store
 
 // begin:: Action types
-const ADD_POST = 'ADD-POST';
-const INPUT_POST_TEXT = 'INPUT-POST-TEXT';
+const ADD_POST = 'ADD_POST';
+const INPUT_POST_TEXT = 'INPUT_POST_TEXT';
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
+const SEND_MASSAGE = 'SEND_MASSAGE';
 // end:: Action types
 
 
