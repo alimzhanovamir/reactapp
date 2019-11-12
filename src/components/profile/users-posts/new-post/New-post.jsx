@@ -6,12 +6,19 @@ import { addPostActionCreator, onPostChangeActionCreator } from "../../../../red
 function NewPost( props ) {
   let newPostElement = React.createRef();
 
+  // Событие ввода текста в <textarea>
   function onPostChange() {
     props.dispatch( onPostChangeActionCreator( newPostElement.current.value)  );
   }
 
+  // Событие добавления поста
   function addPost() {
-    props.dispatch( addPostActionCreator('Amir', newPostElement.current.value) );
+    if ( newPostElement.current.value !== '' ) {
+      props.dispatch( addPostActionCreator('Amir', newPostElement.current.value) );
+    }
+    else {
+      alert('You make me cry. Please, fill the form');
+    }
   }
 
   return (
@@ -22,7 +29,7 @@ function NewPost( props ) {
           onChange={ onPostChange }
           id="textarea"
           value={ props.newPostText }
-          name="" cols="30" rows="10"
+          name="" cols="" rows=""
         />
       </div>
       <div className={classes['new-post__footer']}>

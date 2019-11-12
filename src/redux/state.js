@@ -65,11 +65,6 @@ let store = {
     }
 
     else if ( action.type === ADD_POST ) {
-      let postText = {
-        name: 'Samurai',
-        message: this._state.profilePage.newPostText
-      };
-
       this._state.profilePage.posts.push( action.postText );
       this._state.profilePage.newPostText = '';
       this._callSubscriber( this._state );
