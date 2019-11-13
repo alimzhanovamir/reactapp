@@ -5,6 +5,7 @@ import Nav from './components/nav/Nav';
 import LastDialogs from './components/lastDialogs/LastDialogs';
 import Profile from './components/profile/Profile';
 import Dialogs from './components/dialogs/Dialogs';
+import Settings from './components/settings/Settings';
 import './App.css';
 
 function App(props) {
