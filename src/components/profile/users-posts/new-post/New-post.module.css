@@ -29,11 +29,16 @@
   padding: 6px 30px;
   color: #fff;
   cursor: pointer;
-  transition: box-shadow .3s;
+  transition: all .3s;
 }
 
 .new-post__submit:hover {
   box-shadow: 0 0 0 1px rgba(0,0,0,0.04),0 4px 8px 0 rgba(0,0,0,0.20);
+}
+
+.new-post__submit:disabled {
+  background-color: #ccc;
+  pointer-events: none;
 }
 
 .new-post__footer {
