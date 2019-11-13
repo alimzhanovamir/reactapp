@@ -1,3 +1,8 @@
+// begin:: import reducers
+import profileReducer from "./reducers/profile-reducer";
+import dialogsReducer from "./reducers/dialogs-reducer";
+import lastDialogsReducer from "./reducers/last-dialogs-reducer";
+// end:: import reducers
 
 // begin:: Store
 let store = {
@@ -23,20 +28,35 @@ let store = {
         }
       ],
   
-      newPostText: 'Hi man!'
+      newPostText: ''
     },
     
     messagesPage: {
       dialogsData: [
-        {id: 1, name: 'Amir', lastMessage: 'Hello'},
-        {id: 2, name: 'Lida', lastMessage: 'Hello =)'},
-        {id: 3, name: 'Lada', lastMessage: 'Af af dsaf dasf sdf sadf sadfdsf'}
+        {
+          id: 1,
+          name: 'Amir',
+          lastMessage: 'Hello'},
+        {
+          id: 2,
+          name: 'Lida',
+          lastMessage: 'Hello =)'},
+        {
+          id: 3,
+          name: 'Lada',
+          lastMessage: 'Af af dsaf dasf sdf sadf sadfdsf'}
       ],
   
       messagesData: [
-        { name: 'Amir', message: 'Hello' },
-        { name: 'Lida', message: 'Hello )))' },
-        { name: 'Amir', message: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nulla!)))' }
+        {
+          name: 'Amir',
+          message: 'Hello' },
+        {
+          name: 'Lida',
+          message: 'Hello )))' },
+        {
+          name: 'Amir',
+          message: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nulla!)))' }
       ],
 
       newMessageBody: ''
@@ -57,62 +77,14 @@ let store = {
   getState() {
     return this._state
   },
-  dispatch(action) {
+  dispatch( action ) {
 
-    if ( action.type === INPUT_POST_TEXT ) {
-      this._state.profilePage.newPostText = action.text;
-      this._callSubscriber( this._state );
-    }
-
-    else if ( action.type === ADD_POST ) {
-      this._state.profilePage.posts.push( action.postText );
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber( this._state );
-    }
-
-    else if ( action.type === UPDATE_NEW_MESSAGE_BODY ) {
-      this._state.messagesPage.newMessageBody = action.body;
-      this._callSubscriber( this._state );
-    }
-
-    else if ( action.type === SEND_MASSAGE ) {
-      let body = this._state.messagesPage.newMessageBody;
-      this._state.messagesPage.newMessageBody = '';
-      this._state.messagesPage.messagesData.push({
-        id: 6,
-        message: body
-      });
-      this._callSubscriber( this._state );
-    }
+    this._state.profilePage = profileReducer( this._state.profilePage, action );
+    this._state.messagesPage = dialogsReducer( this._state.messagesPage, action );
+    this._state.lastDialogs = lastDialogsReducer( this._state.lastDialogs, action );
+    this._callSubscriber( this._state )
   }
 };
 // end:: Store
-
-// begin:: Action types
-const ADD_POST = 'ADD_POST';
-const INPUT_POST_TEXT = 'INPUT_POST_TEXT';
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
-const SEND_MASSAGE = 'SEND_MASSAGE';
-// end:: Action types
-
-
-// begin:: Action creators
-export function addPostActionCreator(name, text){
-  return {
-    type: ADD_POST,
-    postText: {
-      name: name,
-      message: text
-    }
-  }
-}
-
-export function onPostChangeActionCreator(text){
-  return {
-    type: INPUT_POST_TEXT,
-    text: text
-  }
-}
-// end:: Action creators
 
 export default store;
