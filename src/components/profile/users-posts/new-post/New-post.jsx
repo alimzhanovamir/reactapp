@@ -1,20 +1,23 @@
 import React from 'react';
 import classes from './New-post.module.css';
-import { addPostActionCreator, onPostChangeActionCreator } from "../../../../redux/state";
+import { addPostCreator, onPostChangeCreator } from "./../../../../redux/reducers/profile-reducer";
 
 // Component NewPost
 function NewPost( props ) {
-  let newPostElement = React.createRef();
+  let postTextarea = React.createRef();
+  let postButton = React.createRef();
+  let buttonDisabled = props.newPostText.length > 0 ? false : true;
 
   // Событие ввода текста в <textarea>
   function onPostChange() {
-    props.dispatch( onPostChangeActionCreator( newPostElement.current.value)  );
+    postButton.current.disabled = postTextarea.current.value.length > 0 ? false : true;
+    props.dispatch( onPostChangeCreator( postTextarea.current.value)  );
   }
 
   // Событие добавления поста
   function addPost() {
-    if ( newPostElement.current.value !== '' ) {
-      props.dispatch( addPostActionCreator('Amir', newPostElement.current.value) );
+    if ( postTextarea.current.value !== '' ) {
+      props.dispatch( addPostCreator('Amir', postTextarea.current.value) );
     }
     else {
       alert('You make me cry. Please, fill the form');
@@ -25,7 +28,7 @@ function NewPost( props ) {
     <div className={classes['new-post']}>
       <div className={classes['new-post__area']}>
         <textarea
-          ref={ newPostElement }
+          ref={ postTextarea }
           onChange={ onPostChange }
           id="textarea"
           value={ props.newPostText }
@@ -33,7 +36,7 @@ function NewPost( props ) {
         />
       </div>
       <div className={classes['new-post__footer']}>
-        <button className={classes['new-post__submit']} onClick={ addPost }>Add post</button>
+        <button className={classes['new-post__submit']} ref={ postButton } onClick={ addPost } disabled={ buttonDisabled }>Add post</button>
       </div>
     </div>
   )
