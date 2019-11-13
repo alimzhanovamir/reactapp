@@ -4,9 +4,11 @@
 
 .messages {
   flex-grow: 1;
+  max-height: 60vh;
   margin: 0;
   padding: 15px;
   list-style: none;
+  overflow-y: auto;
 }
 
 .messages__message {
