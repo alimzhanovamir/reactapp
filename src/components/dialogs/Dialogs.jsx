@@ -24,7 +24,7 @@ function Dialogs(props) {
         { dialogsElements }
       </ul>
 
-      <Messages messagesData={ props.state.messagesData }/>
+      <Messages state={ props.state } dispatch={ props.dispatch }/>
 
     </div>
   )
