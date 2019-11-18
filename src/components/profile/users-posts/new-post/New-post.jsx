@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './New-post.module.css';
-import { addPostCreator, onPostChangeCreator } from "./../../../../redux/reducers/profile-reducer";
 
 // Component NewPost
 function NewPost( props ) {
@@ -8,16 +7,15 @@ function NewPost( props ) {
   let postButton = React.createRef();
   let buttonDisabled = props.newPostText.length > 0 ? false : true;
 
-  // Событие ввода текста в <textarea>
   function onPostChange() {
-    postButton.current.disabled = postTextarea.current.value.length > 0 ? false : true;
-    props.dispatch( onPostChangeCreator( postTextarea.current.value)  );
+    postButton.current.disabled = buttonDisabled;
+    let text = postTextarea.current.value;
+    props.updateNewPostText( text );
   }
 
-  // Событие добавления поста
-  function addPost() {
-    if ( postTextarea.current.value !== '' ) {
-      props.dispatch( addPostCreator('Amir', postTextarea.current.value) );
+  function onAddPost() {
+    if ( props.newPostText !== '' ) {
+      props.addPost( props.newPostText )
     }
     else {
       alert('You make me cry. Please, fill the form');
@@ -36,7 +34,7 @@ function NewPost( props ) {
         />
       </div>
       <div className={classes['new-post__footer']}>
-        <button className={classes['new-post__submit']} ref={ postButton } onClick={ addPost } disabled={ buttonDisabled }>Add post</button>
+        <button className={classes['new-post__submit']} ref={ postButton } onClick={ onAddPost } disabled={ buttonDisabled }>Add post</button>
       </div>
     </div>
   )

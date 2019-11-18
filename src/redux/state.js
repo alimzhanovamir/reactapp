@@ -62,11 +62,13 @@ let store = {
       newMessageBody: ''
     },
   
-    lastDialogs: [
-      { name: 'Amir' },
-      { name: 'Lida' },
-      { name: 'Lada' }
-    ]
+    lastDialogs: {
+      list: [
+        {name: 'Amir'},
+        {name: 'Lida'},
+        {name: 'Lada'}
+      ]
+    }
   },
   _callSubscriber() {
     console.log('State changed');

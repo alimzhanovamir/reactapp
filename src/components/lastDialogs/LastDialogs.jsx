@@ -4,7 +4,7 @@ import classes from './LastDialogs.module.css';
 
 function LastDialogs(props) {
   
-  let lastDialogsList = props.state.map( ( item, id ) => {
+  let lastDialogsList = props.state.list.map( ( item, id ) => {
     return (
       <li className={ classes['last-dialogs__item']} key={id}>
         <NavLink className={ classes['last-dialogs__link']} to="/dialogs">

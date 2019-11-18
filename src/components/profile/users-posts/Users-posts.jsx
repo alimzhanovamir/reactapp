@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Users-posts.module.css';
-import NewPost from './new-post/New-post';
 import Post from './post/Post';
+import NewPostContainer from "./new-post/New-post-container";
 
 function UsersPosts(props) {
   let postsList = props.posts.map( ( post, id ) => {
@@ -15,7 +15,7 @@ function UsersPosts(props) {
   return (
     <div className={ classes['user-posts'] }>
       
-      <NewPost newPostText={ props.newPostText } dispatch={ props.dispatch }/>
+      <NewPostContainer newPostText={ props.newPostText } dispatch={ props.dispatch }/>
 
       <ul className={ classes['user-posts__list'] }>
         { postsList }

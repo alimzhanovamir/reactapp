@@ -1,4 +1,12 @@
-export default function lastDialogsReducer( state, action ) {
+let initialState = {
+  list: [
+    {name: 'Amir'},
+    {name: 'Lida'},
+    {name: 'Lada'}
+  ]
+}
+
+export default function lastDialogsReducer( state = initialState, action ) {
 
   // switch (action.type) {
   //

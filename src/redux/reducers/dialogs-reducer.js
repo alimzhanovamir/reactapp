@@ -1,7 +1,38 @@
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 const SEND_MASSAGE = 'SEND_MASSAGE';
 
-export default function dialogsReducer( state, action ) {
+let initialState = {
+  dialogsData: [
+    {
+      id: 1,
+      name: 'Amir',
+      lastMessage: 'Hello'},
+    {
+      id: 2,
+      name: 'Lida',
+      lastMessage: 'Hello =)'},
+    {
+      id: 3,
+      name: 'Lada',
+      lastMessage: 'Af af dsaf dasf sdf sadf sadfdsf'}
+  ],
+
+  messagesData: [
+    {
+      name: 'Amir',
+      message: 'Hello' },
+    {
+      name: 'Lida',
+      message: 'Hello )))' },
+    {
+      name: 'Amir',
+      message: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nulla!)))' }
+  ],
+
+  newMessageBody: ''
+}
+
+export default function dialogsReducer( state = initialState, action ) {
   switch (action.type) {
 
     case UPDATE_NEW_MESSAGE_BODY:

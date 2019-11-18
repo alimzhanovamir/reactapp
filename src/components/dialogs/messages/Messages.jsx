@@ -1,21 +1,25 @@
 import React from 'react';
 import classes from './Messages.module.css';
-import Message from './message/Message';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../../../redux/reducers/dialogs-reducer'
+import Message from "./message/Message";
+
 function Messages(props) {
 
+  // EVENT CALLBACKS
   function onSendMessage() {
     if ( props.state.newMessageBody.length > 0 ) {
-      props.dispatch( sendMessageCreator() )
+      props.sendMessage()
     }
   }
 
   function onNewMessageChange(e) {
-    props.dispatch( updateNewMessageBodyCreator(e.target.value) )
+    let body = e.target.value;
+    props.newMessageChange( body )
   }
 
+  // New text message from state
   let newMessageBody = props.state.newMessageBody;
 
+  // Message list from state
   let messagesList = props.state.messagesData.map( (messageData, key) => {
     return (
       <li className={classes['messages__message']} key={key}>
