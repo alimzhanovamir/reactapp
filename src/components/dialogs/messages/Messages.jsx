@@ -3,10 +3,10 @@ import classes from './Messages.module.css';
 import Message from "./message/Message";
 
 function Messages(props) {
-
+  // debugger
   // EVENT CALLBACKS
   function onSendMessage() {
-    if ( props.state.newMessageBody.length > 0 ) {
+    if ( props.messagesPage.newMessageBody.length > 0 ) {
       props.sendMessage()
     }
   }
@@ -17,10 +17,10 @@ function Messages(props) {
   }
 
   // New text message from state
-  let newMessageBody = props.state.newMessageBody;
+  let newMessageBody = props.messagesPage.newMessageBody;
 
   // Message list from state
-  let messagesList = props.state.messagesData.map( (messageData, key) => {
+  let messagesList = props.messagesPage.messagesData.map( (messageData, key) => {
     return (
       <li className={classes['messages__message']} key={key}>
         <Message name={ messageData.name } message={ messageData.message } />

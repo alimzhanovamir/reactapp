@@ -30,7 +30,7 @@ let initialState = {
   ],
 
   newMessageBody: ''
-}
+};
 
 export default function dialogsReducer( state = initialState, action ) {
   switch (action.type) {

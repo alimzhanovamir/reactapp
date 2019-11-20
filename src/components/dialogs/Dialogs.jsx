@@ -4,8 +4,8 @@ import MessagesContainer from './messages/Messages-container';
 import DialogsItem from './dialogsItem/DialogsItem';
 
 function Dialogs(props) {
-
-  let dialogsElements = props.state.dialogsData.map( ( dialog, key ) => {
+  // debugger
+  let dialogsElements = props.dialogsData.map( ( dialog, key ) => {
     return (
       <li className={classes['dialogs__item']} key={key}>
         <DialogsItem
@@ -24,7 +24,7 @@ function Dialogs(props) {
         { dialogsElements }
       </ul>
 
-      <MessagesContainer state={ props.state } dispatch={ props.dispatch } />
+      <MessagesContainer />
 
     </div>
   )

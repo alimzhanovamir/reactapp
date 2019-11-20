@@ -23,7 +23,7 @@ let initialState = {
   ],
 
   newPostText: ''
-}
+};
 
 export default function profileReducer( state = initialState, action ) {
   switch (action.type) {
