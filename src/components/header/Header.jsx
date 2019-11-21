@@ -7,7 +7,7 @@ function Header(props) {
       <a href="/">
         <img src="https://www.freeiconspng.com/uploads/avengers-icon-16.png" alt=""/>
       </a>
-      <span className={classes['header__text']}>{props.text}</span>
+      <span className={classes['header__text']}></span>
     </header>
   )
 }

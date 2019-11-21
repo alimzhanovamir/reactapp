@@ -3,21 +3,13 @@ const INPUT_POST_TEXT = 'INPUT_POST_TEXT';
 
 let initialState = {
   userData: {
-    name:'Amir Alimzhanov',
-    site: 'amir.pro'
+    name:'Tor',
+    site: 'Avangers'
   },
 
   posts: [
     {
-      name: 'Amir',
-      message: 'Hi bleat\''
-    },
-    {
-      name: 'Amir',
-      message: 'Hi bleat\''
-    },
-    {
-      name: 'Lida',
+      name: 'Captain America',
       message: 'Hi \''
     }
   ],

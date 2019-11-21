@@ -1,8 +1,8 @@
 let initialState = {
   list: [
-    {name: 'Amir'},
-    {name: 'Lida'},
-    {name: 'Lada'}
+    {name: 'Strange'},
+    {name: 'Groot'},
+    {name: 'Loki'}
   ]
 }
 

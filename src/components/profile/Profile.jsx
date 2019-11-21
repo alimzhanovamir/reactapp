@@ -8,7 +8,7 @@ function Profile(props) {
   return (
     <main className="main">
       <div className="wide-image">
-        <img src="https://cdn.pixabay.com/photo/2017/11/13/23/33/landscape-2947094_960_720.jpg" alt="" />
+        <img src="http://www.artofvfx.com/THOR/THOR_WHISKYTREE_VFX_04.jpg" alt="" />
       </div>
       
       <UserDataContainer/>

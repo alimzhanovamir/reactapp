@@ -5,28 +5,28 @@ let initialState = {
   dialogsData: [
     {
       id: 1,
-      name: 'Amir',
+      name: 'Strange',
       lastMessage: 'Hello'},
     {
       id: 2,
-      name: 'Lida',
-      lastMessage: 'Hello =)'},
+      name: 'Groot',
+      lastMessage: 'I\'m groot'},
     {
       id: 3,
-      name: 'Lada',
-      lastMessage: 'Af af dsaf dasf sdf sadf sadfdsf'}
+      name: 'Loki',
+      lastMessage: 'I have an army.'}
   ],
 
   messagesData: [
     {
-      name: 'Amir',
+      name: 'Groot',
+      message: 'I\'m groot' },
+    {
+      name: 'Tor',
       message: 'Hello' },
     {
-      name: 'Lida',
-      message: 'Hello )))' },
-    {
-      name: 'Amir',
-      message: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nulla!)))' }
+      name: 'Groot',
+      message: 'I\'m groot' }
   ],
 
   newMessageBody: ''

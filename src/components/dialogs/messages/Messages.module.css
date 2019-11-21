@@ -1,5 +1,5 @@
 .messages-section {
-
+  flex-grow: 1;
 }
 
 .messages {

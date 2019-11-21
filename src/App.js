@@ -11,7 +11,7 @@ import DialogsContainer from "./components/dialogs/Dialogs-container";
 function App(props) {
   return (
     <div className="grid">
-      <Header text='Site'/>
+      <Header/>
 
       <aside className="aside">
         <Nav />
