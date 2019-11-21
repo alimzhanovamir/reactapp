@@ -4,9 +4,9 @@ import Header from './components/header/Header';
 import Nav from './components/nav/Nav';
 import LastDialogs from './components/lastDialogs/LastDialogs';
 import Profile from './components/profile/Profile';
-import Dialogs from './components/dialogs/Dialogs';
 import Settings from './components/settings/Settings';
 import './App.css';
+import DialogsContainer from "./components/dialogs/Dialogs-container";
 
 function App(props) {
   return (
@@ -15,18 +15,18 @@ function App(props) {
 
       <aside className="aside">
         <Nav />
-        <LastDialogs state={ props.state.lastDialogs }/>
+        <LastDialogs/>
       </aside>
       <div className="content">
         <Route
           exact path="/"
-          render={ () => <Profile profilePage={ props.state.profilePage } dispatch={ props.dispatch } /> } />
+          render={ () => <Profile/> } />
 
         <Route
-          path="/dialogs" render={ () => <Dialogs state={ props.state.messagesPage } dispatch={ props.dispatch }/> }/>
+          path="/dialogs" render={ () => <DialogsContainer/> }/>
 
         <Route
-          path="/settings" render={ () => <Settings /> } />
+          path="/settings" render={ () => <Settings/> } />
       </div>
     </div>
   );

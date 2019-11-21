@@ -3,6 +3,7 @@ import classes from './New-post.module.css';
 
 // Component NewPost
 function NewPost( props ) {
+
   let postTextarea = React.createRef();
   let postButton = React.createRef();
   let buttonDisabled = props.newPostText.length > 0 ? false : true;

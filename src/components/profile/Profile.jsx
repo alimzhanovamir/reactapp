@@ -1,8 +1,9 @@
 import React from 'react';
-import UserData from './userData/UserData';
 import './Profile.css';
-import UsersPosts from './users-posts/Users-posts';
+import UserDataContainer from "./userData/UserData-container";
+import UserPostsContainer from "./users-posts/User-posts-container";
 
+// Component Profile
 function Profile(props) {
   return (
     <main className="main">
@@ -10,11 +11,9 @@ function Profile(props) {
         <img src="https://cdn.pixabay.com/photo/2017/11/13/23/33/landscape-2947094_960_720.jpg" alt="" />
       </div>
       
-      <UserData userData={ props.profilePage.userData } />
-      <UsersPosts 
-        posts={ props.profilePage.posts } 
-        newPostText={ props.profilePage.newPostText }
-        dispatch={ props.dispatch }/>
+      <UserDataContainer/>
+
+      <UserPostsContainer/>
       
     </main>
   )
