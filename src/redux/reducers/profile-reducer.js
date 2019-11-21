@@ -26,16 +26,21 @@ let initialState = {
 };
 
 export default function profileReducer( state = initialState, action ) {
+
   switch (action.type) {
 
     case INPUT_POST_TEXT:
-      state.newPostText = action.text;
-      return state;
+      return {
+        ...state,
+        newPostText: action.text
+      };
 
     case ADD_POST:
-      state.posts.push( action.postText );
-      state.newPostText = '';
-      return state;
+      return {
+        ...state,
+        posts: [...state.posts, action.postText],
+        newPostText: ''
+      };
 
     default:
       return state;
@@ -43,6 +48,7 @@ export default function profileReducer( state = initialState, action ) {
   }
 }
 
+// Action creators
 export function addPostCreator( name, text ){
   return {
     type: ADD_POST,
