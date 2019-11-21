@@ -1,37 +1,28 @@
-import React from 'react';
 import { addPostCreator, onPostChangeCreator } from "../../../../redux/reducers/profile-reducer";
 import NewPost from "./New-post";
-import StoreContext from "../../../../store-context";
+import {connect} from "react-redux";
 
-// Component NewPostContainer
-function NewPostContainer(props ) {
-
-  return (
-    <StoreContext.Consumer>
-      {
-        (store) => {
-          let state = store.getState().profilePage;
-          // debugger
-          // Событие ввода текста в <textarea>
-          function onPostChange( text ) {
-            store.dispatch( onPostChangeCreator( text )  );
-          }
-
-          // Событие добавления поста
-          function addPost( text ) {
-            store.dispatch( addPostCreator('Amir', text) );
-          }
-
-          return (
-            <NewPost
-              updateNewPostText={onPostChange}
-              addPost={addPost}
-              newPostText={state.newPostText}/>
-          )
-        }
-      }
-    </StoreContext.Consumer>
-  )
+function mapStateToProps (state) {
+  return {
+    newPostText: state.profilePage.newPostText,
+    userName: state.profilePage.userData.name
+  }
 }
+
+function mapDispatchToProps (dispatch) {
+  return {
+    updateNewPostText: (text) => {
+      dispatch(onPostChangeCreator( text ))
+    },
+    addPost: (name, text) => {
+      dispatch( addPostCreator(name, text) );
+    }
+  }
+}
+
+const NewPostContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+) (NewPost)
 
 export default NewPostContainer

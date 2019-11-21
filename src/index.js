@@ -5,22 +5,15 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import store from './redux/redux-store';
 import './index.css';
-import StoreContext from "./store-context";
+// import { Provider } from "./store-context";
+import { Provider } from "react-redux";
 
-function rerenderEntireTree(state) {
   ReactDOM.render(
     <BrowserRouter>
-      <StoreContext.Provider value={store}>
+      <Provider store={store}>
         <App />
-      </StoreContext.Provider>
-    </BrowserRouter>, document.getElementById('root'));
-}
-
-rerenderEntireTree( store.getState() );
-
-store.subscribe( () => {
-  let state = store.getState();
-  rerenderEntireTree( state )
-} );
+      </Provider>
+    </BrowserRouter>, document.getElementById('root')
+  );
 
 serviceWorker.unregister();

@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './LastDialogs.module.css';
+import {connect} from "react-redux";
 
 function LastDialogs(props) {
   
-  /*let lastDialogsList = props.state.list.map( ( item, id ) => {
+  let lastDialogsList = props.list.map( ( item, id ) => {
     return (
       <li className={ classes['last-dialogs__item']} key={id}>
         <NavLink className={ classes['last-dialogs__link']} to="/dialogs">
@@ -15,13 +16,13 @@ function LastDialogs(props) {
         </NavLink>
       </li>
     )
-  });*/
+  });
 
   return (
     <div className={ classes['last-dialogs']}>
       <div className={ classes['last-dialogs__header']}>Last dialogs</div>
       <ul className={ classes['last-dialogs__list']}>
-        {/*{ lastDialogsList }*/}
+        { lastDialogsList }
         <li className={ classes['last-dialogs__item']}>
           <NavLink className={ classes['last-dialogs__link']} to="/dialogs">
             <div className={ classes['last-dialogs__dialog']}>
@@ -35,4 +36,12 @@ function LastDialogs(props) {
   )
 }
 
-export default LastDialogs
+function mapStateToProps (state) {
+  return {
+    list: state.lastDialogs.list
+  }
+}
+
+export default connect(
+  mapStateToProps
+) ( LastDialogs )

@@ -9,14 +9,14 @@ function NewPost( props ) {
   let buttonDisabled = props.newPostText.length > 0 ? false : true;
 
   function onPostChange() {
-    postButton.current.disabled = buttonDisabled;
     let text = postTextarea.current.value;
+    postButton.current.disabled = buttonDisabled;
     props.updateNewPostText( text );
   }
 
   function onAddPost() {
     if ( props.newPostText !== '' ) {
-      props.addPost( props.newPostText )
+      props.addPost( props.userName, props.newPostText )
     }
     else {
       alert('You make me cry. Please, fill the form');
@@ -31,7 +31,6 @@ function NewPost( props ) {
           onChange={ onPostChange }
           id="textarea"
           value={ props.newPostText }
-          name="" cols="" rows=""
         />
       </div>
       <div className={classes['new-post__footer']}>

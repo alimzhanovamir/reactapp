@@ -1,21 +1,15 @@
-import React from 'react';
-import StoreContext from "../../../store-context";
+// import React from 'react';
 import UserData from "./UserData";
+import {connect} from "react-redux";
 
-// Component UserDataContainer
-function UserDataContainer(props) {
-
-  return (
-      <StoreContext.Consumer>
-      {
-        (store) => {
-          let userData = store.getState().profilePage.userData;
-          // debugger
-          return ( <UserData userData={ userData }/> )
-        }
-      }
-      </StoreContext.Consumer>
-  )
+function mapStateToProps (state) {
+  return {
+    userData: state.profilePage.userData
+  }
 }
+
+const UserDataContainer = connect(
+  mapStateToProps
+)( UserData );
 
 export default UserDataContainer

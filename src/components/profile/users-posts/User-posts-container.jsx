@@ -1,27 +1,14 @@
-import React from 'react';
-import StoreContext from "../../../store-context";
 import UsersPosts from "./Users-posts";
+import {connect} from "react-redux";
 
-// Component UserPostsContainer
-function UserPostsContainer(props) {
-
-  return (
-      <StoreContext.Consumer>
-      {
-        (store) => {
-          let state = store.getState();
-
-          console.log(state);
-          return (
-              <UsersPosts
-                posts={ state.profilePage.posts }
-                newPostText={ state.profilePage.newPostText }
-                dispatch={ store.dispatch }/>
-          )
-        }
-      }
-      </StoreContext.Consumer>
-  )
+function mapStateToProps (state) {
+  return {
+    posts: state.profilePage.posts
+  }
 }
+
+const UserPostsContainer = connect(
+  mapStateToProps
+) (UsersPosts)
 
 export default UserPostsContainer

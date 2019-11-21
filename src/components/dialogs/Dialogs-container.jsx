@@ -1,23 +1,14 @@
-import React from 'react';
-import StoreContext from "../../store-context";
 import Dialogs from "./Dialogs";
+import {connect} from "react-redux";
 
-// Component DialogsContainer
-function DialogsContainer(props) {
-
-  return (
-      <StoreContext.Consumer>
-        {
-          (store) => {
-            let dialogsData = store.getState().messagesPage.dialogsData;
-
-            return (
-              <Dialogs dialogsData={dialogsData}/>
-            )
-          }
-        }
-      </StoreContext.Consumer>
-  )
+function mapStateToProps (state) {
+  return {
+    dialogsData: state.messagesPage.dialogsData
+  }
 }
+
+const DialogsContainer = connect(
+  mapStateToProps
+) ( Dialogs )
 
 export default DialogsContainer
