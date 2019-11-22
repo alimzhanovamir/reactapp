@@ -11,7 +11,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    updateNewPostText: (text) => {
+    updateNewPostText: text => {
       dispatch(onPostChangeCreator( text ))
     },
     addPost: (name, text) => {

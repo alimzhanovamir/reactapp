@@ -1,0 +1,80 @@
+.users-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.users-list__item {
+    margin-bottom: 20px;
+}
+
+.user {
+    position: relative;
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 15px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.04),0 4px 8px 0 rgba(0,0,0,0.20);
+}
+
+.user > * {
+    margin-bottom: 5px;
+}
+
+.user__id {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #f4f4f4;
+    border-radius: 0 0 0 3px;
+    padding: 3px 9px;
+    font-size: 12px;
+}
+
+.user__name {
+    font-weight: bold;
+}
+
+.user__status {
+    color: gray;
+    font-size: 13px;
+}
+
+.user__address {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.user__follow-button,
+.users-footer__button{
+    background-color: dodgerblue;
+    border: 1px solid dodgerblue;
+    border-radius: 3px;
+    padding: 5px 15px;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.user__follow-button:hover,
+.users-footer__button:hover {
+    background-color: transparent;
+    border-color: dodgerblue;
+    color: dodgerblue;
+}
+
+.user__follow-button:active,
+.users-footer__button:active {
+    background-color: dodgerblue;
+    color: #fff;
+}
+
+.users-footer {
+    text-align: center;
+}
+
+users-footer__button {
+
+}
