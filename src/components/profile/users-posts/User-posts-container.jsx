@@ -7,8 +7,6 @@ function mapStateToProps (state) {
   }
 }
 
-const UserPostsContainer = connect(
+export default connect(
   mapStateToProps
-) (UsersPosts)
-
-export default UserPostsContainer
+) (UsersPosts);

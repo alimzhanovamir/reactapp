@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import classes from './Users.module.css';
 
 function Users(props) {
@@ -8,20 +9,31 @@ function Users(props) {
      <div  className={classes['users-paginator']}>
        <div>Page size: {props.pageSize}</div>
        <div>Total count: {props.totalUsersCount}</div>
+       <div>Current Page: {props.currentPage}</div>
+
        <ul className={classes['users-paginator__list']}>
          {
            props.pages.map( ( pageNumber) => {
-             return <li key={pageNumber} className={classes['users-paginator__item']}>
-                  <span
-                      className={`
+             // debugger
+             return (
+               <li key={pageNumber} className={classes['users-paginator__item']}>
+                  <button
+
+                    className={`
                       ${classes['users-paginator__link']} 
                       ${props.currentPage === pageNumber && classes['active']}`
-                      }
-                      onClick={() => { props.onPageChanged(pageNumber) }}
+                    }
+
+                    onClick={() => {
+                      props.onPageChanged(pageNumber)
+                    }}
+
+                    disabled={ props.isFetching }
                   >
                     {pageNumber}
-                  </span>
-             </li>
+                  </button>
+               </li>
+             )
            })
          }
        </ul>
@@ -33,12 +45,18 @@ function Users(props) {
            props.users.map( user => (
                <li className={classes['users-list__item']} key={user.id}>
                  <div className={classes['user']}>
+                   <div className={classes['user__']}>
+                     <img src={user.photos.small} alt=""/>
+                   </div>
                    <div className={classes['user__id']}>{ user.id }</div>
-                   <div className={classes['user__name']}>{ user.name }</div>
-                   <div className={classes['user__status']}>{ user.status }</div>
+                   <NavLink
+                     className={classes['user__name']}
+                     to={`profile/${user.id}`}>{ user.name }
+                   </NavLink>
+                    {user.status && <div className={classes['user__status']}>{ user.status }</div>}
                    <div>
-                     <div className={classes['user__address']}>{ user.location.country }:</div>
-                     <div className={classes['user__address']}>{ user.location.city }</div>
+                     {/*<div className={classes['user__address']}>{ user.location.country }:</div>*/}
+                     {/*<div className={classes['user__address']}>{ user.location.city }</div>*/}
                    </div>
                    { user.followed
                        ? <button className={classes['user__follow-button']} onClick={ () => {props.unfollow(user.id)} }>followed</button>

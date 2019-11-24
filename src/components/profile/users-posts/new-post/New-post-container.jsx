@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 function mapStateToProps (state) {
   return {
     newPostText: state.profilePage.newPostText,
-    userName: state.profilePage.userData.name
+    fullName: state.profilePage.profile ? state.profilePage.profile.fullName : 'none'
   }
 }
 
@@ -23,6 +23,6 @@ function mapDispatchToProps (dispatch) {
 const NewPostContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-) (NewPost)
+) (NewPost);
 
 export default NewPostContainer

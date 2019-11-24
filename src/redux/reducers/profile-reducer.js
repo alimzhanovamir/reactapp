@@ -1,16 +1,24 @@
 const ADD_POST = 'ADD_POST';
 const INPUT_POST_TEXT = 'INPUT_POST_TEXT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
-  userData: {
-    name:'Tor',
-    site: 'Avangers'
-  },
+  // profile: {
+  //   fullName:'Tor',
+  //   aboutMe: 'Avangers',
+  //   photos: {
+  //     large: null
+  //   }
+  // },
 
   posts: [
     {
-      name: 'Captain America',
+      fullName: 'Captain America',
       message: 'Hi \''
+    },
+    {
+      fullName: 'Tor',
+      message: '!!!!!!!!!!!!'
     }
   ],
 
@@ -20,6 +28,12 @@ let initialState = {
 export default function profileReducer( state = initialState, action ) {
 
   switch (action.type) {
+
+    case SET_USER_PROFILE:
+      return {
+        ...state,
+        profile: action.profile
+      };
 
     case INPUT_POST_TEXT:
       return {
@@ -41,11 +55,18 @@ export default function profileReducer( state = initialState, action ) {
 }
 
 // Action creators
+export function  setUserProfile(profile) {
+  return {
+    type: SET_USER_PROFILE,
+    profile: profile
+  }
+}
+
 export function addPostCreator( name, text ){
   return {
     type: ADD_POST,
     postText: {
-      name: name,
+      fullName: name,
       message: text
     }
   }

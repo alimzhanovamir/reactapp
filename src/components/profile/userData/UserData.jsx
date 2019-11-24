@@ -1,21 +1,31 @@
 import React from 'react';
 import './UserData.css'
+import Loading from '../../common/loading/Loading';
 
 function UserData(props) {
-  return (
-    <div className="user-data">
 
-      <div className="user-data__avatar">
-        <img src="https://cdn2.iconfinder.com/data/icons/business-management-52/96/Artboard_20-512.png" alt="" />
-      </div>
+  if (props.profile) {
+    return (
+      <>
+        <div className="wide-image">
+          <img src="http://www.artofvfx.com/THOR/THOR_WHISKYTREE_VFX_04.jpg" alt="" />
+        </div>
+        <div className="user-data">
+          <div className="user-data__avatar">
+            <img src={props.profile.photos.large} alt="" />
+          </div>
+          <div className="user-data__info">
+            <div className="user-data__name test">{ props.profile.fullName }</div>
+            <div className="user-data__site">{ props.profile.aboutMe }</div>
+          </div>
+        </div>
+      </>
+    )
+  }
+  else {
+    return <Loading/>
+  }
 
-      <div className="user-data__info">
-        <div className="user-data__name test">{ props.userData.name }</div>
-        <div className="user-data__site">{ props.userData.site }</div>
-      </div>
-
-    </div>
-  )
 }
 
 export default UserData

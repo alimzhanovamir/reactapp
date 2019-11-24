@@ -6,6 +6,7 @@
 
 .users-paginator__list {
     display: inline-flex;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -16,6 +17,8 @@
 
 .users-paginator__link {
     display: block;
+    background-color: transparent;
+    border: none;
     border-radius: 3px;
     padding: 5px 10px;
     color: #000;
@@ -89,6 +92,7 @@
 }
 
 .user__name {
+    color: #000;
     font-weight: bold;
 }
 

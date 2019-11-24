@@ -16,7 +16,7 @@ function NewPost( props ) {
 
   function onAddPost() {
     if ( props.newPostText !== '' ) {
-      props.addPost( props.userName, props.newPostText )
+      props.addPost( props.fullName, props.newPostText )
     }
     else {
       alert('You make me cry. Please, fill the form');

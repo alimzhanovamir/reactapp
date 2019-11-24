@@ -1,13 +1,13 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import Header from './components/header/Header';
 import Nav from './components/nav/Nav';
-import LastDialogs from './components/lastDialogs/LastDialogs';
-import Profile from './components/profile/Profile';
-import UsersContainer from "./components/users/Users-container";
-import Settings from './components/settings/Settings';
 import './App.css';
+import Settings from './components/settings/Settings';
+import UsersContainer from "./components/users/Users-container";
 import DialogsContainer from "./components/dialogs/Dialogs-container";
+import LastDialogs from './components/lastDialogs/LastDialogs';
+import ProfileContainer from "./components/profile/Profile-container";
 
 function App(props) {
   return (
@@ -21,10 +21,15 @@ function App(props) {
       <div className="main">
 
         {/* Profile page */}
+        <Route exact path="/">
+          <Redirect to="/profile" />
+        </Route>
+
         <Route
-          exact path="/"
-          render={ () => <Profile/> }
+          path="/profile"
+          render={ () => <ProfileContainer/> }
         />
+
 
         {/* Users page */}
         <Route
