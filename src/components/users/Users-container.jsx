@@ -18,12 +18,11 @@ class UsersContainer extends React.Component {
       .get('https://api.myjson.com/bins/jn4cq')
       .then( ({data}) => {
         this.props.setUsers(data.users);
-        setTimeout(() => {
-          this.props.setIsFetching(false)
-        },
-          2000
-        )
-      });
+          setTimeout(() => {
+            this.props.setIsFetching(false)
+          }, 1000)
+        }
+      );
   }
 
   onPageChanged = pageNumber => {
@@ -33,7 +32,9 @@ class UsersContainer extends React.Component {
       .get('https://api.myjson.com/bins/jn4cq')
       .then( ({data}) => {
         this.props.setUsers(data.users);
-        this.props.setIsFetching(false);
+        setTimeout(() => {
+          this.props.setIsFetching(false)
+        }, 1000)
       });
   };
 
