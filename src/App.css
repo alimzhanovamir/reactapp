@@ -15,12 +15,31 @@
   margin: 0 auto;
 }
 
+@media screen and (max-width: 991px) {
+  .grid {
+    grid-template-areas:
+            'header header header'
+            'aside aside aside'
+            'main main main'
+            'footer footer footer'
+    ;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+  }
+}
+
 .aside {
   grid-area: aside;
   padding: 15px;
 }
 
-.content {
+.main {
+  grid-area: main;
   padding: 15px;
+}
+
+.footer {
+  grid-area: footer;
+  text-align: center;
 }
 

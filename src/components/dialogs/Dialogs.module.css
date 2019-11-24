@@ -13,6 +13,12 @@
   list-style: none;
 }
 
+@media screen and (max-width: 991px) {
+  .dialogs__list {
+    width: auto;
+  }
+}
+
 .dialogs__item {
   border-bottom: 1px solid rgba(0,0,0,0.1);
 }

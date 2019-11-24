@@ -6,6 +6,12 @@
   box-shadow: 0 0 0 1px rgba(0,0,0,0.04),0 4px 8px 0 rgba(0,0,0,0.20);
 }
 
+@media screen and (max-width: 991px) {
+  .last-dialogs {
+    display: none;
+  }
+}
+
 .last-dialogs__header {
   margin-bottom: 15px;
   font-size: 14px;

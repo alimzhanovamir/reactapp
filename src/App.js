@@ -15,10 +15,10 @@ function App(props) {
       <Header/>
 
       <aside className="aside">
-        <Nav />
+        <Nav/>
         <LastDialogs/>
       </aside>
-      <div className="content">
+      <div className="main">
 
         {/* Profile page */}
         <Route
@@ -45,6 +45,7 @@ function App(props) {
         />
 
       </div>
+      <div className="footer">Footer</div>
     </div>
   );
 }

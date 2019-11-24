@@ -80,7 +80,6 @@ let store = {
     return this._state
   },
   dispatch( action ) {
-
     this._state.profilePage = profileReducer( this._state.profilePage, action );
     this._state.messagesPage = dialogsReducer( this._state.messagesPage, action );
     this._state.lastDialogs = lastDialogsReducer( this._state.lastDialogs, action );
