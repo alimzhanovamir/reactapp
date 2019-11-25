@@ -8,7 +8,7 @@ let initialState = {
 };
 
 export default function authReducer( state = initialState, action ) {
-  console.log('state',state)
+
   switch (action.type) {
 
     case SET_USER_DATA:
