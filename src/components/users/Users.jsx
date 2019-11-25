@@ -14,7 +14,6 @@ function Users(props) {
        <ul className={classes['users-paginator__list']}>
          {
            props.pages.map( ( pageNumber) => {
-             // debugger
              return (
                <li key={pageNumber} className={classes['users-paginator__item']}>
                   <button
