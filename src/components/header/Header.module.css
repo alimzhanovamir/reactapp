@@ -4,14 +4,26 @@
   justify-content: space-between;
   align-items: center;
   min-height: 50px;
-  background-color: rgba(0,0,0,0.20);
-  padding: 0 15px;
+  border-radius: 3px;
+  padding: 10px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.04),0 4px 8px 0 rgba(0,0,0,0.20);
 }
 
 .header img {
-  max-width: 50px;
+  height: 30px;
 }
 
-.header__text {
-  font-weight: bold;
+.header__link {
+  background-color: dodgerblue;
+  border: 1px solid dodgerblue;
+  border-radius: 3px;
+  padding: 5px 15px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.header__link:hover {
+  background-color: transparent;
+  color: dodgerblue;
 }

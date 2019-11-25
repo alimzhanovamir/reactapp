@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import Header from './components/header/Header';
 import Nav from './components/nav/Nav';
 import './App.css';
 import Settings from './components/settings/Settings';
@@ -8,11 +7,12 @@ import UsersContainer from "./components/users/Users-container";
 import DialogsContainer from "./components/dialogs/Dialogs-container";
 import LastDialogs from './components/lastDialogs/LastDialogs';
 import ProfileContainer from "./components/profile/Profile-container";
+import HeaderContainer from "./components/header/HeaderContainer";
 
 function App(props) {
   return (
     <div className="grid">
-      <Header/>
+      <HeaderContainer/>
 
       <aside className="aside">
         <Nav/>
