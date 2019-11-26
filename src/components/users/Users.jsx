@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './Users.module.css';
+import FollowAPI from "../../crud/followAPI";
 
 function Users(props) {
  return (
@@ -58,8 +59,28 @@ function Users(props) {
                      {/*<div className={classes['user__address']}>{ user.location.city }</div>*/}
                    </div>
                    { user.followed
-                       ? <button className={classes['user__follow-button']} onClick={ () => {props.unfollow(user.id)} }>followed</button>
-                       : <button className={classes['user__follow-button']} onClick={ () => {props.follow(user.id)} }>follow</button>
+                       ?  <button className={classes['user__follow-button']} onClick={
+                            () => {
+                              FollowAPI.Unfollow(user.id)
+                                .then( resultCode => {
+                                  // console.log(resultCode)
+                                 if ( resultCode === 0 ) {
+                                   props.unfollow(user.id);
+                                 }
+                                })
+                            }
+                          }>followed</button>
+                       : <button className={classes['user__follow-button']} onClick={
+                         () => {
+                           FollowAPI.Follow(user.id)
+                             .then( resultCode => {
+                               console.log(resultCode)
+                               if ( resultCode === 0 ) {
+                                 props.follow(user.id);
+                               }
+                             })
+                         }
+                       }>follow</button>
                    }
                  </div>
                </li>

@@ -9,7 +9,8 @@ import {
   setUsers,
   setIsFetching
 } from '../../redux/reducers/users-reducer';
-import UsersAPI from "../../api/usersAPI";
+import UsersAPI from "../../crud/usersAPI";
+import FollowAPI from "../../crud/followAPI";
 
 class UsersContainer extends React.Component {
 
