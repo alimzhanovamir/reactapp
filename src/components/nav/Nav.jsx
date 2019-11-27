@@ -2,15 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './Nav.module.css';
 
-function Nav() {  
+function Nav() {
   return (
     <nav className={ classes.nav }>
       <ul className={ classes.nav__list }>
         <li className={classes.nav__item}>
-          <NavLink className={ classes.nav__link } activeClassName={classes.active} exact to="/">Profile</NavLink>
+          <NavLink className={ classes.nav__link } activeClassName={classes.active} to="/Profile">Profile</NavLink>
         </li>
         <li className={classes.nav__item}>
-          <NavLink className={ classes.nav__link } activeClassName={classes.active} exact to="/users">Users</NavLink>
+          <NavLink className={ classes.nav__link } activeClassName={classes.active} to="/users">Users</NavLink>
         </li>
         <li className={ classes.nav__item }>
           <NavLink className={ classes.nav__link } activeClassName={classes.active} to="/dialogs">Messages</NavLink>
