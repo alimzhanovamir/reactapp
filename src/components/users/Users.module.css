@@ -109,7 +109,7 @@
 }
 
 .user__follow-button,
-.users-footer__button{
+.users-footer__button {
     background-color: dodgerblue;
     border: 1px solid dodgerblue;
     border-radius: 3px;
@@ -117,11 +117,14 @@
     color: #fff;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all .3s;
+    transition: background-color .3s;
 }
 
 .user__follow-button {
     min-width: 100px;
+    background-size: 80px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
 }
 
 .user__follow-button:hover,
@@ -135,6 +138,14 @@
 .users-footer__button:active {
     background-color: dodgerblue;
     color: #fff;
+}
+
+.user__follow-button:disabled {
+  position: relative;
+  background-image: url(/static/media/loading.c8d74389.gif);
+  background-color: #fff;
+  opacity: .6;
+  color: transparent;
 }
 
 .users-footer {

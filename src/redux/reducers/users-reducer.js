@@ -4,14 +4,15 @@ const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE ='SET_CURRENT_PAGE';
 const SET_IS_FETCHING = 'SET_IS_FETCHING';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
-// const SET_FOLLOWS = 'SET_FOLLOWS';
+const FOLLOWING_IN_PROGRESS = 'FOLLOWING_IN_PROGRESS';
 
 let initialState = {
   users: [],
   pageSize: 3,
   totalUsersCount: 0,
   currentPage: 1,
-  isFetching: false
+  isFetching: false,
+  followingInProgress: []
 };
 
 export default function usersReducer( state = initialState, action ) {
@@ -63,6 +64,16 @@ export default function usersReducer( state = initialState, action ) {
         ...state,
         users: [...action.users]
       };
+      
+    case FOLLOWING_IN_PROGRESS:
+      return {
+        ...state,
+        followingInProgress: action.status ?
+            [...state.followingInProgress, action.fetchingID]
+            :
+            state.followingInProgress.filter( el => el !== action.fetchingID )
+
+      }
 
     default:
       return state;
@@ -110,5 +121,13 @@ export function setUsers( users ) {
   return {
     type: SET_USERS,
     users: users
+  }
+}
+
+export function toggleFollowingProgress( fetchingID, status ) {
+  return {
+    type: FOLLOWING_IN_PROGRESS,
+    fetchingID: fetchingID,
+    status: status
   }
 }
