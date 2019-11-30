@@ -15,14 +15,15 @@ import UsersAPI from "../../crud/usersAPI";
 class UsersContainer extends React.Component {
 
   componentDidMount() {
-    this.props.setIsFetching(true);
-
-    UsersAPI.getUsers( this.props.currentPage, this.props.pageSize)
-      .then( data => {
-        this.props.setTotalUsersCount(data.totalCount);
-        this.props.setUsers(data.items);
-        this.props.setIsFetching(false);
-      });
+    // This code moved to reducer(thunk)
+    // this.props.setIsFetching(true);
+    //
+    // UsersAPI.getUsers( this.props.currentPage, this.props.pageSize)
+    //   .then( data => {
+    //     this.props.setTotalUsersCount(data.totalCount);
+    //     this.props.setUsers(data.items);
+    //     this.props.setIsFetching(false);
+    //   });
   }
 
   onPageChanged = pageNumber => {

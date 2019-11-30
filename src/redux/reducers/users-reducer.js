@@ -1,3 +1,5 @@
+import UsersAPI from "../../crud/usersAPI";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -15,6 +17,7 @@ let initialState = {
   followingInProgress: []
 };
 
+// Reducer
 export default function usersReducer( state = initialState, action ) {
 
   switch (action.type) {
@@ -82,35 +85,35 @@ export default function usersReducer( state = initialState, action ) {
 }
 
 // Action creators
-export function setTotalUsersCount( totalUsersCount ){
+export function setTotalUsersCount( totalUsersCount ) {
   return {
     type: SET_TOTAL_USERS_COUNT,
     totalUsersCount: totalUsersCount
   }
 }
 
-export function setIsFetching( isFetching ){
+export function setIsFetching( isFetching ) {
   return {
     type: SET_IS_FETCHING,
     isFetching: isFetching
   }
 }
 
-export function setCurrentPage( currentPage ){
+export function setCurrentPage( currentPage ) {
   return {
     type: SET_CURRENT_PAGE,
     currentPage: currentPage
   }
 }
 
-export function follow( userID ){
+export function follow( userID ) {
   return {
     type: FOLLOW,
     userID: userID
   }
 }
 
-export function unfollow( userID ){
+export function unfollow( userID ) {
   return {
     type: UNFOLLOW,
     userID: userID
@@ -130,4 +133,16 @@ export function toggleFollowingProgress( fetchingID, status ) {
     fetchingID: fetchingID,
     status: status
   }
+}
+
+// Thunks
+export function getUsersThunk(dispatch) {
+  dispatch(setIsFetching( true ));
+
+  UsersAPI.getUsers( this.props.currentPage, this.props.pageSize)
+    .then( data => {
+      this.props.setTotalUsersCount(data.totalCount);
+      this.props.setUsers(data.items);
+      this.props.setIsFetching(false);
+    });
 }
