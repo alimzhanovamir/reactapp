@@ -18,7 +18,6 @@ function Users(props) {
               return (
                 <li key={pageNumber} className={classes['users-paginator__item']}>
                   <button
-
                     className={`
                       ${classes['users-paginator__link']} 
                       ${props.currentPage === pageNumber && classes['active']}`

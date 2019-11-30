@@ -15,8 +15,10 @@ function App(props) {
       <HeaderContainer/>
 
       <aside className="aside">
-        <Nav/>
-        <LastDialogs/>
+        <div className="aside__sticky">
+          <Nav/>
+          <LastDialogs/>
+        </div>
       </aside>
       <div className="main">
 
