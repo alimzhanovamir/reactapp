@@ -6,10 +6,10 @@ import UserPostsContainer from "./users-posts/User-posts-container";
 // Component Profile
 function Profile() {
   return (
-    <main className="main">
+    <>
       <UserDataContainer/>
       <UserPostsContainer/>
-    </main>
+    </>
   )
 }
 

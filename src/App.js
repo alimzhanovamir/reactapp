@@ -21,7 +21,7 @@ function App() {
           <LastDialogs/>
         </div>
       </aside>
-      <div className="main">
+      <main className="main">
         <Switch>
           <Route exact path="/">
             <Redirect to="/profile" />
@@ -52,8 +52,8 @@ function App() {
             render={ () => <Settings/> }
           />
         </Switch>
-      </div>
-      <div className="footer">Footer</div>
+      </main>
+      <footer className="footer">Footer</footer>
     </div>
   );
 }
