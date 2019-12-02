@@ -5,11 +5,13 @@
 }
 
 .users-paginator__list {
-    display: inline-flex;
-    flex-wrap: wrap;
+    display: flex;
+    /* flex-wrap: wrap; */
+    width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
+    overflow: hidden;
 }
 .users-paginator__item {
     margin: 0 2px;

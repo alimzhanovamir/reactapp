@@ -17,20 +17,20 @@ class ProfileContainer extends React.Component {
 
   render() {
     return (
-      <Profile/>
+      <Profile isAuth={this.props.isAuth}/>
     )
   }
 }
 
 // userID получаем с сервера
-// function mapStateToProps(state) {
-//   return {
-//     userID: state.auth.userID
-//   }
-// }
+function mapStateToProps(state) {
+  return {
+    isAuth: state.auth.isAuth
+  }
+}
 
 export default connect(
-    null,
+  mapStateToProps,
   {
     loadProfile
   }
