@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import MessagesContainer from './messages/Messages-container';
 import DialogsItem from './dialogsItem/DialogsItem';
-import AuthPage from '../auth/AuthPage';
 
 function Dialogs(props) {
 
@@ -17,8 +16,6 @@ function Dialogs(props) {
       </li>
     )
   });
-
-  if (!props.isAuth) return <AuthPage/>
 
   return (
     <div className={classes.dialogs}>

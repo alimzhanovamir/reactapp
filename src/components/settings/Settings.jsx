@@ -1,15 +1,12 @@
 import React from 'react';
-import AuthPage from '../auth/AuthPage';
+import {connect} from "react-redux";
+import { withAuthRedirect } from '../hoc/withAuthRedirect';
 
-function Settings(props) {
-  
-  if (!props.isAuth) return <AuthPage/> 
+function Settings(props) { return <h1>Coming soon!</h1>}
 
-  return (
-    <h1>
-      Coming soon!
-    </h1>
-  )
-}
+function mapStateToProps (state) {return { isAuth: state.auth.isAuth }}
 
-export default Settings
+export default connect(
+  mapStateToProps,
+  null
+ ) ( withAuthRedirect( Settings ) )

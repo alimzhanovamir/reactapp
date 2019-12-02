@@ -23,40 +23,34 @@ function App() {
       </aside>
       <div className="main">
         <Switch>
-          {/* Profile page */}
           <Route exact path="/">
             <Redirect to="/profile" />
           </Route>
 
+          <Route
+            path="/profile/:userID?"
+            render={ () => <ProfileContainer/> }
+          />
+          
           <Route
             path="/login"
             render={ () => <AuthPage/> }
           />
 
           <Route
-            path="/profile/:userID?"
-            render={ () => <ProfileContainer/> }
-          />
-
-
-          {/* Users page */}
-          <Route
             path="/users"
             render={ () => <UsersContainer/> }
           />
 
-          {/* Dialogs page */}
           <Route
             path="/dialogs"
             render={ () => <DialogsContainer/> }
           />
 
-          {/* Settings page */}
           <Route
             path="/settings"
             render={ () => <Settings/> }
           />
-
         </Switch>
       </div>
       <div className="footer">Footer</div>

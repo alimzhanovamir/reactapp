@@ -1,6 +1,8 @@
 import React from 'react';
-import Users from "./Users";
+import { compose } from 'redux';
 import {connect} from "react-redux";
+import { withAuthRedirect } from '../hoc/withAuthRedirect';
+import Users from "./Users";
 import {
   setCurrentPage,
   getUsers,
@@ -56,12 +58,15 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  {
-    setCurrentPage,
-    onFollow,
-    onUnfollow,
-    getUsers
-  }
-) ( UsersContainer );
+export default compose(
+  connect(
+    mapStateToProps,
+    {
+      setCurrentPage,
+      onFollow,
+      onUnfollow,
+      getUsers
+    }
+  ),
+  withAuthRedirect
+)(UsersContainer);
