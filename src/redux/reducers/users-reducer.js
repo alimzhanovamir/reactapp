@@ -1,4 +1,5 @@
 import UsersAPI from "../../crud/usersAPI";
+import FollowAPI from "../../crud/followAPI";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -17,7 +18,6 @@ let initialState = {
   followingInProgress: []
 };
 
-// Reducer
 export default function usersReducer( state = initialState, action ) {
 
   switch (action.type) {
@@ -85,35 +85,35 @@ export default function usersReducer( state = initialState, action ) {
 }
 
 // Action creators
-export function setTotalUsersCount( totalUsersCount ) {
+export function setTotalUsersCount( totalUsersCount ){
   return {
     type: SET_TOTAL_USERS_COUNT,
     totalUsersCount: totalUsersCount
   }
 }
 
-export function setIsFetching( isFetching ) {
+export function setIsFetching( isFetching ){
   return {
     type: SET_IS_FETCHING,
     isFetching: isFetching
   }
 }
 
-export function setCurrentPage( currentPage ) {
+export function setCurrentPage( currentPage ){
   return {
     type: SET_CURRENT_PAGE,
     currentPage: currentPage
   }
 }
 
-export function follow( userID ) {
+export function followSuccess( userID ){
   return {
     type: FOLLOW,
     userID: userID
   }
 }
 
-export function unfollow( userID ) {
+export function unfollowSuccess( userID ){
   return {
     type: UNFOLLOW,
     userID: userID
@@ -136,13 +136,44 @@ export function toggleFollowingProgress( fetchingID, status ) {
 }
 
 // Thunks
-export function getUsersThunk(dispatch) {
-  dispatch(setIsFetching( true ));
+export function getUsers(currentPage, pageSize) {
+  return (dispatch) => {
+    dispatch(setIsFetching(true));
 
-  UsersAPI.getUsers( this.props.currentPage, this.props.pageSize)
-    .then( data => {
-      this.props.setTotalUsersCount(data.totalCount);
-      this.props.setUsers(data.items);
-      this.props.setIsFetching(false);
-    });
+    UsersAPI.getUsers(currentPage, pageSize)
+      .then( data => {
+        dispatch(setTotalUsersCount(data.totalCount));
+        dispatch(setUsers(data.items));
+        dispatch(setIsFetching(false));
+      });
+
+  }
+}
+
+export function onFollow(userID) {
+  return (dispatch) => {
+    dispatch(toggleFollowingProgress(userID, true));
+
+    FollowAPI.Follow(userID)
+      .then(resultCode => {
+        if (resultCode === 0) {
+          dispatch(followSuccess(userID));
+          dispatch(toggleFollowingProgress(userID, false));
+        }
+      });
+  }
+}
+
+export function onUnfollow(userID) {
+  return (dispatch) => {
+    dispatch(toggleFollowingProgress(userID, true));
+
+    FollowAPI.Unfollow(userID)
+      .then(resultCode => {
+        if (resultCode === 0) {
+          dispatch(unfollowSuccess(userID));
+          dispatch(toggleFollowingProgress(userID, false));
+        }
+      });
+  }
 }

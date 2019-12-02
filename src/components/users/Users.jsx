@@ -1,7 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import classes from './Users.module.css';
-import FollowAPI from "../../crud/followAPI";
 
 function Users(props) {
   return (
@@ -59,35 +58,11 @@ function Users(props) {
                   </div>
                   {user.followed
                     ? <button className={classes['user__follow-button']}
-                        onClick={
-                          () => {
-                            props.toggleFollowingProgress(user.id, true);
-                            FollowAPI.Unfollow(user.id)
-                              .then(resultCode => {
-                                if (resultCode === 0) {
-                                  props.unfollow(user.id);
-                                  props.toggleFollowingProgress(user.id, false);
-                                }
-                              })
-                          }
-                        }
-
+                        onClick={() => props.onUnfollow(user.id)}
                         disabled={ props.followingInProgress.some( id => id === user.id )}
-                    >followed</button>
+                      >followed</button>
                     : <button className={classes['user__follow-button']}
-                        onClick={
-                          () => {
-                            props.toggleFollowingProgress(user.id, true);
-                            FollowAPI.Follow(user.id)
-                              .then(resultCode => {
-                                if (resultCode === 0) {
-                                  props.follow(user.id);
-                                  props.toggleFollowingProgress(user.id, false);
-                                }
-                              })
-                          }
-                        }
-
+                        onClick={() => props.onFollow(user.id)}
                         disabled={ props.followingInProgress.some( id => id === user.id )}
                       >follow</button>
                   }

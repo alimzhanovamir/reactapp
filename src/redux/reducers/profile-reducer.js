@@ -1,16 +1,10 @@
+import profileAPI from '../../crud/profileAPI';
+
 const ADD_POST = 'ADD_POST';
 const INPUT_POST_TEXT = 'INPUT_POST_TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
-  // profile: {
-  //   fullName:'Tor',
-  //   aboutMe: 'Avangers',
-  //   photos: {
-  //     large: null
-  //   }
-  // },
-
   posts: [
     {
       fullName: 'Captain America',
@@ -76,5 +70,17 @@ export function onPostChangeCreator( text ){
   return {
     type: INPUT_POST_TEXT,
     text: text
+  }
+}
+
+// Thunks
+export function loadProfile(userID) {
+  return (dispatch) => {
+    if (!userID) userID = 5270;
+
+    profileAPI.loadProfile(userID)
+      .then( data => {
+        dispatch(setUserProfile(data));
+      });
   }
 }
