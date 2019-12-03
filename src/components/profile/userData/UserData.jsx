@@ -16,7 +16,7 @@ function UserData(props) {
             <img src={props.profile.photos.large} alt="" />
           </div>
           <div className="user-data__info">
-            <UserStatus status='Zdarova bliat'/>
+            <UserStatus status={props.status} uploadStatus={props.uploadStatus}/>
             <div className="user-data__name test">{ props.profile.fullName }</div>
             <div className="user-data__site">{ props.profile.aboutMe }</div>
           </div>

@@ -20,11 +20,11 @@ function LastDialogs(props) {
 
   return (
     <div className={ classes['last-dialogs']}>
-      <div className={ classes['last-dialogs__header']}>Last dialogs</div>
+      <div className={ classes['last-dialogs__header']}>New users</div>
       <ul className={ classes['last-dialogs__list']}>
         { lastDialogsList }
         <li className={ classes['last-dialogs__item']}>
-          <NavLink className={ classes['last-dialogs__link']} to="/dialogs">
+          <NavLink className={ classes['last-dialogs__link']} to="/users">
             <div className={ classes['last-dialogs__dialog']}>
               <img className={ classes['last-dialogs__avatar']} src="" alt=""/>
             </div>

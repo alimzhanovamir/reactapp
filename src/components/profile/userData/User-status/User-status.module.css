@@ -1,0 +1,55 @@
+.user-status {
+  position: relative;
+}
+
+.user-status__field {
+  color: #999;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.user-status__field:hover {
+  text-decoration: underline;
+}
+
+.user-status__edit {
+  position: absolute;
+  top: -13px;
+  left: -19px;
+  width: 250px;
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 10px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.20);
+}
+
+.user-status__input {
+  width: 100%;
+  height: 28px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  padding-left: 8px;
+  color: #999;
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 28px;
+  outline: none;
+  border: 1px solid rgba(0,0,0,0.20);
+}
+
+.user-status__button {
+  background-color: dodgerblue;
+  border: 1px solid dodgerblue;
+  border-radius: 3px;
+  padding: 5px 10px;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color .3s;
+}
+
+.user-status__button:hover {
+  background-color: transparent;
+  border-color: dodgerblue;
+  color: dodgerblue;
+}

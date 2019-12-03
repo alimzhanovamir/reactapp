@@ -3,6 +3,7 @@ import profileAPI from '../../crud/profileAPI';
 const ADD_POST = 'ADD_POST';
 const INPUT_POST_TEXT = 'INPUT_POST_TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_USER_STATUS = 'SET_USER_STATUS';
 
 let initialState = {
   posts: [
@@ -15,7 +16,7 @@ let initialState = {
       message: '!!!!!!!!!!!!'
     }
   ],
-
+  status: '',
   newPostText: ''
 };
 
@@ -27,6 +28,12 @@ export default function profileReducer( state = initialState, action ) {
       return {
         ...state,
         profile: action.profile
+      };
+
+    case SET_USER_STATUS:
+      return {
+        ...state,
+        status: action.status ? action.status : 'write status'
       };
 
     case INPUT_POST_TEXT:
@@ -56,6 +63,13 @@ export function  setUserProfile(profile) {
   }
 }
 
+export function setStatus(status) {
+  return {
+    type: SET_USER_STATUS,
+    status: status
+  }
+}
+
 export function addPostCreator( name, text ){
   return {
     type: ADD_POST,
@@ -74,6 +88,8 @@ export function onPostChangeCreator( text ){
 }
 
 // Thunks
+
+// GET profile data
 export function loadProfile(userID) {
   return (dispatch) => {
     if (!userID) userID = 5270;
@@ -81,6 +97,30 @@ export function loadProfile(userID) {
     profileAPI.loadProfile(userID)
       .then( data => {
         dispatch(setUserProfile(data));
+      });
+  }
+}
+
+// GET status data
+export function loadStatus(userID) {
+  return (dispatch) => {
+    if (!userID) userID = 5270;
+
+    profileAPI.getUserStatus(userID)
+      .then( status => {
+        dispatch(setStatus(status))
+      });
+  }
+}
+
+// PUT status
+export function uploadStatus(status) {
+  return (dispatch) => {
+    profileAPI.updateUserStatus(status)
+      .then( response => {
+        if ( response.data.resultCode === 0 ) {
+          dispatch(setStatus(status))
+        }
       });
   }
 }
