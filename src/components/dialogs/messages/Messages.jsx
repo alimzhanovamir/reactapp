@@ -1,23 +1,46 @@
 import React from 'react';
 import classes from './Messages.module.css';
 import Message from "./message/Message";
+import { reduxForm, Field } from 'redux-form';
 
+// Component
+function AddMessageForm(props) {
+
+  // function onSendMessage() {
+  //   if ( props.messagesPage.newMessageBody.length > 0 ) {
+  //     props.sendMessage()
+  //   }
+  // }
+
+  // function onNewMessageChange(e) {
+  //   let body = e.target.value;
+  //   props.newMessageChange( body )
+  // }
+
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div className={classes['message-input']}>
+        <Field name='messageTextarea' component='textarea'/>
+      </div>
+      <div className={classes['message-submit']}>
+        <button name='messageSubmit' className='new-post__submit'>Send</button>
+      </div>
+    </form>
+  )
+}
+
+// HOC
+const AddMessageReduxForm = reduxForm({
+  form: 'messageForm'
+})(AddMessageForm)
+
+// Component
 function Messages(props) {
-  // debugger
-  // EVENT CALLBACKS
-  function onSendMessage() {
-    if ( props.messagesPage.newMessageBody.length > 0 ) {
-      props.sendMessage()
-    }
-  }
 
-  function onNewMessageChange(e) {
-    let body = e.target.value;
-    props.newMessageChange( body )
+  function onSubmit(formData) {
+    console.log(formData.messageTextarea);
+    props.sendMessage(formData.messageTextarea)
   }
-
-  // New text message from state
-  let newMessageBody = props.messagesPage.newMessageBody;
 
   // Message list from state
   let messagesList = props.messagesPage.messagesData.map( (messageData, key) => {
@@ -33,14 +56,11 @@ function Messages(props) {
       <ul className={classes['messages']}>
         { messagesList }
       </ul>
-      <div className={classes['message-input']}>
-        <textarea value={ newMessageBody } onChange={ onNewMessageChange } name="" placeholder='Enter your message'></textarea>
-      </div>
-      <div className={classes['message-submit']}>
-        <button className="new-post__submit" onClick={ onSendMessage }>Send</button>
-      </div>
+      <AddMessageReduxForm onSubmit={onSubmit}/>
     </div>
   )
 }
+
+
 
 export default Messages
