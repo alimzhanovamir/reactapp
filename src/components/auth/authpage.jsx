@@ -35,7 +35,7 @@ function AuthForm(props) {
 const LoginReduxForm = reduxForm({
   // Уникальное имя для данной формы
   form: 'loginForm'
-})(AuthForm);
+}) (AuthForm);
 
 function AuthPage(props) {  
   function onSubmit(formData) {

@@ -1,7 +1,7 @@
 import profileAPI from '../../crud/profileAPI';
 
 const ADD_POST = 'ADD_POST';
-const INPUT_POST_TEXT = 'INPUT_POST_TEXT';
+// const INPUT_POST_TEXT = 'INPUT_POST_TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
 
@@ -36,12 +36,6 @@ export default function profileReducer( state = initialState, action ) {
         status: action.status ? action.status : 'write status'
       };
 
-    case INPUT_POST_TEXT:
-      return {
-        ...state,
-        newPostText: action.text
-      };
-
     case ADD_POST:
       return {
         ...state,
@@ -55,7 +49,10 @@ export default function profileReducer( state = initialState, action ) {
   }
 }
 
-// Action creators
+/* begin:: Action creators
+ * gets params
+ * return object(Action)
+ */
 export function  setUserProfile(profile) {
   return {
     type: SET_USER_PROFILE,
@@ -79,15 +76,15 @@ export function addPostCreator( name, text ){
     }
   }
 }
+// end:: Action creators
 
-export function onPostChangeCreator( text ){
-  return {
-    type: INPUT_POST_TEXT,
-    text: text
-  }
-}
 
-// Thunks
+
+
+/* begin:: Thunks creators
+ * gets params
+ * return function(Thunk)
+ */
 
 // GET profile data
 export function loadProfile(userID) {
@@ -124,3 +121,5 @@ export function uploadStatus(status) {
       });
   }
 }
+
+// end:: Thunks

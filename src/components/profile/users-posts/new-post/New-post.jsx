@@ -1,22 +1,31 @@
 import React from 'react';
+import { reduxForm, Field } from 'redux-form';
 import classes from './New-post.module.css';
 
 // Component NewPost
+
+function NewPostForm(props) {
+  return (
+    <form className={classes['new-post']} onSubmit={props.handleSubmit}>
+      <div className={classes['new-post__area']}>
+        <Field name='postTextarea' component='textarea'/>
+      </div>
+      <div className={classes['new-post__footer']}>
+        <button className={classes['new-post__submit']}>Add post</button>
+      </div>
+    </form>
+  )
+}
+
+const NewPostReduxForm = reduxForm({
+  form: 'NewPostForm'
+}) (NewPostForm)
+
 function NewPost( props ) {
-
-  let postTextarea = React.createRef();
-  let postButton = React.createRef();
-  let buttonDisabled = props.newPostText.length > 0 ? false : true;
-
-  function onPostChange() {
-    let text = postTextarea.current.value;
-    postButton.current.disabled = buttonDisabled;
-    props.updateNewPostText( text );
-  }
-
-  function onAddPost() {
-    if ( props.newPostText !== '' ) {
-      props.addPost( props.fullName, props.newPostText )
+  
+  function onSubmit(formData) {
+    if ( formData.postTextarea ) {
+      props.addPost( props.fullName, formData.postTextarea )
     }
     else {
       alert('You make me cry. Please, fill the form');
@@ -24,19 +33,7 @@ function NewPost( props ) {
   }
 
   return (
-    <div className={classes['new-post']}>
-      <div className={classes['new-post__area']}>
-        <textarea
-          ref={ postTextarea }
-          onChange={ onPostChange }
-          id="textarea"
-          value={ props.newPostText }
-        />
-      </div>
-      <div className={classes['new-post__footer']}>
-        <button className={classes['new-post__submit']} ref={ postButton } onClick={ onAddPost } disabled={ buttonDisabled }>Add post</button>
-      </div>
-    </div>
+    <NewPostReduxForm onSubmit={onSubmit}/>
   )
 }
 
