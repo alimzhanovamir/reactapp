@@ -53,7 +53,7 @@ export default function profileReducer( state = initialState, action ) {
  * gets params
  * return object(Action)
  */
-export function  setUserProfile(profile) {
+export function setUserProfile(profile) {
   return {
     type: SET_USER_PROFILE,
     profile: profile
@@ -83,7 +83,7 @@ export function addPostCreator( name, text ){
 
 /* begin:: Thunks creators
  * gets params
- * return function(Thunk)
+ * return function(Thunk) with dispatch in argument
  */
 
 // GET profile data

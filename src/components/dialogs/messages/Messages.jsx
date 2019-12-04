@@ -20,7 +20,7 @@ function AddMessageForm(props) {
   return (
     <form onSubmit={props.handleSubmit}>
       <div className={classes['message-input']}>
-        <Field name='messageTextarea' component='textarea'/>
+        <Field name='messageTextarea' component='textarea' type='text'/>
       </div>
       <div className={classes['message-submit']}>
         <button name='messageSubmit' className='new-post__submit'>Send</button>

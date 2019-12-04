@@ -1,4 +1,4 @@
-import { addPostCreator, onPostChangeCreator } from "../../../../redux/reducers/profile-reducer";
+import { addPostCreator } from "../../../../redux/reducers/profile-reducer";
 import NewPost from "./New-post";
 import {connect} from "react-redux";
 
