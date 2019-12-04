@@ -7,8 +7,15 @@ export default class UserStatus extends React.Component {
     status: this.props.status
   }
 
-  componentDidUpdate() {
-    console.log('i\'m updated' );
+  componentDidUpdate(prevProps) {
+    // Защита от перерисовки статуса, если он не был изменен
+    if ( prevProps.status !== this.props.status ) {
+      console.log('change status');
+      this.setState({
+        status: this.props.status
+      })
+    }
+    
   }
 
   activeEditMode() {
