@@ -6,7 +6,7 @@ let initialState = {
   userID: null,
   email: null,
   login: null,
-  isAuth: false
+  isAuth: true
 };
 
 export default function authReducer( state = initialState, action ) {
@@ -47,6 +47,20 @@ export function getAuthInfo() {
 
         if ( data.resultCode === 0 ) {
           dispatch(setAuthUserData(id, email, login));
+        }
+      });
+  }
+}
+
+export function login(properties) {
+  return (dispatch) => {
+    AuthAPI.login(properties)
+      .then( respone => {
+        console.log('then ');
+        console.log(respone);
+        if ( respone.data.resultCode === 0 ) {
+          console.log('login');
+          AuthAPI.getAuth()
         }
       });
   }

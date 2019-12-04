@@ -12,7 +12,8 @@ function Header(props) {
       {props.isAuth ?
         <span>{props.login}</span>
         :
-        <NavLink className={classes['header__link']} to={'/login'}>Login</NavLink>
+        <div>Guest</div>
+        // <NavLink className={classes['header__link']} to={'/login'}>Login</NavLink>
       }
     </header>
   )
