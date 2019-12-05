@@ -4,6 +4,7 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { login } from '../../redux/reducers/auth-reducer';
 
+// Component
 function AuthForm(props) {
   console.log('props from AuthForm', props);
   return (
@@ -32,15 +33,17 @@ function AuthForm(props) {
   )
 }
 
+// Component
 const LoginReduxForm = reduxForm({
   // Уникальное имя для данной формы
   form: 'loginForm'
 }) (AuthForm);
 
+// Component
 function AuthPage(props) {  
-  function onSubmit(formData) {
-    console.log('On submit');
-    props.login(formData)
+  function onSubmit({loginEmail, loginPassword, rememberMe}) {
+    console.log('On submit', loginEmail, loginPassword, rememberMe);
+    props.login(loginEmail, loginPassword, rememberMe)
   }
 
   return (

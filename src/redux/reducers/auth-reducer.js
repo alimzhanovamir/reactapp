@@ -16,8 +16,7 @@ export default function authReducer( state = initialState, action ) {
     case SET_USER_DATA:
       return {
         ...state,
-        ...action.data,
-        isAuth: true
+        ...action.payload
       };
 
     default:
@@ -27,13 +26,14 @@ export default function authReducer( state = initialState, action ) {
 }
 
 // Action creators
-export function setAuthUserData(userID, email, login) {
+export function setAuthUserData(userID, email, login, isAuth) {
   return {
     type: SET_USER_DATA,
-    data: {
+    payload: {
       userID: userID,
       email: email,
-      login: login
+      login: login,
+      isAuth: isAuth
     }
   }
 }
@@ -46,21 +46,34 @@ export function getAuthInfo() {
         let { id, email, login } = data.data;
 
         if ( data.resultCode === 0 ) {
-          dispatch(setAuthUserData(id, email, login));
+          dispatch(setAuthUserData(id, email, login, true));
         }
       });
   }
 }
 
-export function login(properties) {
+export function login(email, password, rememberMe) { 
   return (dispatch) => {
-    AuthAPI.login(properties)
+    AuthAPI.login(email, password, rememberMe)
       .then( respone => {
-        console.log('then ');
+        console.log('promise');
         console.log(respone);
         if ( respone.data.resultCode === 0 ) {
           console.log('login');
-          AuthAPI.getAuth()
+          dispatch(getAuthInfo());
+        }
+      });
+  }
+}
+
+export function logout() { 
+  return (dispatch) => {
+    AuthAPI.logout()
+      .then( respone => {
+        console.log(respone);
+        if ( respone.data.resultCode === 0 ) {
+          console.log('logout');
+          dispatch(setAuthUserData(null, null, null, false));
         }
       });
   }

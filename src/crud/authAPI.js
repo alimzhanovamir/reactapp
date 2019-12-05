@@ -18,15 +18,21 @@ const AuthAPI = {
         })
     )
   },
-  login(properties) {
+  login(email, password, rememberMe = false) {
     let prop = {
-      email: properties.loginEmail,
-      password: properties.loginPassword,
-      rememberMe: properties.rememberMe
+      email: email,
+      password: password,
+      rememberMe: rememberMe
     }
     return (
       instance
         .post(`login`, prop)
+    )
+  },
+  logout(e) {
+    return (
+      instance
+        .delete(`login`)
     )
   }
 }
